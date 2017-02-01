@@ -1,28 +1,30 @@
-package main
+package rpihandlers
 
 import (
 	"log"
+
+	"github.com/datoga/rpi-go-traffic-light/mqttwrapper"
 )
 
 type ModeListenerHandler struct {
-	mqtt         *TrafficLightMQTTProxy
-	changeModeCb ChangeModeMQTTCallback
+	mqtt         *mqttwrapper.TrafficLightMQTTProxy
+	changeModeCb mqttwrapper.ChangeModeMQTTCallback
 }
 
 func NewModeListenerHandler() *ModeListenerHandler {
-	mqtt := NewTrafficLightMQTTProxy("rpi-mode-listener", "rpi-mode-listener")
+	mqtt := mqttwrapper.NewTrafficLightMQTTProxy("rpi-mode-listener", "rpi-mode-listener", false)
 
 	return &ModeListenerHandler{mqtt: mqtt}
 }
 
-func (modeListener *ModeListenerHandler) WithChangeModeCallback(cb ChangeModeMQTTCallback) *ModeListenerHandler {
+func (modeListener *ModeListenerHandler) WithChangeModeCallback(cb mqttwrapper.ChangeModeMQTTCallback) *ModeListenerHandler {
 	modeListener.SetChangeModeCallback(cb)
 
 	return modeListener
 }
 
 func (modeListener *ModeListenerHandler) Start() error {
-	if !modeListener.mqtt.client.IsConnected() {
+	if !modeListener.mqtt.IsConnected() {
 		if err := modeListener.mqtt.Connect(); err != nil {
 			return err
 		}
@@ -53,7 +55,7 @@ func (modeListener *ModeListenerHandler) Destroy() {
 	modeListener.mqtt.Disconnect()
 }
 
-func (modeListener *ModeListenerHandler) SetChangeModeCallback(cb ChangeModeMQTTCallback) {
+func (modeListener *ModeListenerHandler) SetChangeModeCallback(cb mqttwrapper.ChangeModeMQTTCallback) {
 	modeListener.changeModeCb = cb
 }
 

@@ -1,14 +1,16 @@
-package main
+package rpihandlers
 
 import (
 	"container/ring"
 	"log"
 	"time"
+
+	"github.com/datoga/rpi-go-traffic-light/mqttwrapper"
 )
 
 type AutomaticStateHandler struct {
 	currentState    *ring.Ring
-	mqtt            *TrafficLightMQTTProxy
+	mqtt            *mqttwrapper.TrafficLightMQTTProxy
 	quitAutomaticCh chan int
 	Started         bool
 	stopping        bool
@@ -20,7 +22,7 @@ type TrafficLightState struct {
 }
 
 func NewAutomaticStateHandler() *AutomaticStateHandler {
-	mqtt := NewTrafficLightMQTTProxy("rpi-automatic-handler", "rpi-automatic-handler")
+	mqtt := mqttwrapper.NewTrafficLightMQTTProxy("rpi-automatic-handler", "rpi-automatic-handler", false)
 
 	greenState := TrafficLightState{"green", 10}
 	yellowState := TrafficLightState{"yellow", 1}
@@ -48,7 +50,7 @@ func (auto *AutomaticStateHandler) Start() error {
 
 	auto.Started = true
 
-	if !auto.mqtt.client.IsConnected() {
+	if !auto.mqtt.IsConnected() {
 		if err := auto.mqtt.Connect(); err != nil {
 			return err
 		}

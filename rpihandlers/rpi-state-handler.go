@@ -1,21 +1,26 @@
-package main
+package rpihandlers
 
 import (
 	"log"
+
+	"github.com/datoga/rpi-go-traffic-light/mqttwrapper"
+	"github.com/datoga/rpi-go-traffic-light/rpigpiowrapper"
 )
 
 type RPIStateHandler struct {
-	mqtt *TrafficLightMQTTProxy
+	mqtt    *mqttwrapper.TrafficLightMQTTProxy
+	rpigpio *rpigpiowrapper.RPIGPIOWrapper
 }
 
 func NewRPIStateHandler() *RPIStateHandler {
-	mqtt := NewTrafficLightMQTTProxy("rpi-listener", "rpi-listener")
+	mqtt := mqttwrapper.NewTrafficLightMQTTProxy("rpi-listener", "rpi-listener", false)
+	rpigpio := rpigpiowrapper.NewRPIGPIOWrapper()
 
-	return &RPIStateHandler{mqtt: mqtt}
+	return &RPIStateHandler{mqtt: mqtt, rpigpio: rpigpio}
 }
 
 func (rpi *RPIStateHandler) Start() error {
-	if !rpi.mqtt.client.IsConnected() {
+	if !rpi.mqtt.IsConnected() {
 		if err := rpi.mqtt.Connect(); err != nil {
 			return err
 		}
@@ -49,4 +54,10 @@ func (rpi *RPIStateHandler) Destroy() {
 func (rpi *RPIStateHandler) changeStateCallback(state string) {
 	log.Println("State changed to", state)
 	log.Println("Activating GPIOS")
+
+	err := rpi.rpigpio.SetState(state)
+
+	if err != nil {
+		log.Println("Error activating GPIOs:", err)
+	}
 }

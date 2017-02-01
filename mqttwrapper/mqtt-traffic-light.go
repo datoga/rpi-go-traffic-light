@@ -1,7 +1,8 @@
-package main
+package mqttwrapper
 
 import (
 	"log"
+	"time"
 
 	MQTT "github.com/eclipse/paho.mqtt.golang"
 )
@@ -19,7 +20,7 @@ type TrafficLightMQTTProxy struct {
 	changeModeCb  ChangeModeMQTTCallback
 }
 
-func NewTrafficLightMQTTProxy(user string, password string) *TrafficLightMQTTProxy {
+func NewTrafficLightMQTTProxy(user string, password string, setAutomaticOnDisconnect bool) *TrafficLightMQTTProxy {
 
 	opts := MQTT.NewClientOptions()
 	opts.AddBroker("tcp://m21.cloudmqtt.com:17122")
@@ -28,6 +29,12 @@ func NewTrafficLightMQTTProxy(user string, password string) *TrafficLightMQTTPro
 	opts.SetPassword(password)
 
 	opts.SetAutoReconnect(true)
+
+	opts.SetPingTimeout(time.Duration(5) * time.Second)
+
+	if setAutomaticOnDisconnect {
+		opts.SetWill(MQTT_TOPIC_MODE, "auto", 0, true)
+	}
 
 	client := MQTT.NewClient(opts)
 
@@ -104,6 +111,16 @@ func (mqtt *TrafficLightMQTTProxy) PublishState(state string) error {
 	return nil
 }
 
+func (mqtt *TrafficLightMQTTProxy) PublishMode(mode string) error {
+	if token := mqtt.client.Publish(MQTT_TOPIC_MODE, 0, true, mode); token.Wait() && token.Error() != nil {
+		return token.Error()
+	}
+
+	log.Println("Mode published:", mode)
+
+	return nil
+}
+
 func (mqtt *TrafficLightMQTTProxy) Disconnect() {
 	mqtt.client.Disconnect(0)
 
@@ -134,4 +151,8 @@ func (mqtt *TrafficLightMQTTProxy) modeChangedHandler(client MQTT.Client, msg MQ
 	if mqtt.changeModeCb != nil {
 		mqtt.changeModeCb(newMode)
 	}
+}
+
+func (mqtt *TrafficLightMQTTProxy) IsConnected() bool {
+	return mqtt.client.IsConnected()
 }
