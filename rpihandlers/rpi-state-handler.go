@@ -9,17 +9,30 @@ import (
 
 type RPIStateHandler struct {
 	mqtt    *mqttwrapper.TrafficLightMQTTProxy
-	rpigpio *rpigpiowrapper.RPIGPIOWrapper
+	rpigpio rpigpiowrapper.RPIGPIO
 }
 
 func NewRPIStateHandler() *RPIStateHandler {
 	mqtt := mqttwrapper.NewTrafficLightMQTTProxy("rpi-listener", "rpi-listener", false)
-	rpigpio := rpigpiowrapper.NewRPIGPIOWrapper()
+
+	simulated := true
+
+	var rpigpio rpigpiowrapper.RPIGPIO
+
+	if simulated {
+		rpigpio = rpigpiowrapper.NewRPIGPIOMock()
+	} else {
+		//	rpigpio = rpigpiowrapper.NewRPIGPIOPhy()
+	}
 
 	return &RPIStateHandler{mqtt: mqtt, rpigpio: rpigpio}
 }
 
 func (rpi *RPIStateHandler) Start() error {
+	if err := rpi.rpigpio.Prepare(); err != nil {
+		return err
+	}
+
 	if !rpi.mqtt.IsConnected() {
 		if err := rpi.mqtt.Connect(); err != nil {
 			return err
@@ -43,6 +56,8 @@ func (rpi *RPIStateHandler) Stop() error {
 	}
 
 	log.Println("Stopped")
+
+	rpi.rpigpio.Destroy()
 
 	return nil
 }

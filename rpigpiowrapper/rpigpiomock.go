@@ -5,21 +5,28 @@ import (
 	"log"
 )
 
-type RPIGPIOWrapper struct {
+type RPIGPIOMock struct {
 	gpios map[string]string
 }
 
-func NewRPIGPIOWrapper() *RPIGPIOWrapper {
+func NewRPIGPIOMock() *RPIGPIOMock {
+
+	return &RPIGPIOMock{}
+}
+
+func (rpigpio *RPIGPIOMock) Prepare() error {
 	gpios := map[string]string{
 		"green":  "gpioGREEN",
 		"yellow": "gpioYELLOW",
 		"red":    "gpioRED",
 	}
 
-	return &RPIGPIOWrapper{gpios: gpios}
+	rpigpio.gpios = gpios
+
+	return nil
 }
 
-func (rpigpio *RPIGPIOWrapper) SetState(color string) error {
+func (rpigpio *RPIGPIOMock) SetState(color string) error {
 	if _, ok := rpigpio.gpios[color]; !ok {
 		return errors.New("Color " + color + " not found")
 	}
@@ -33,4 +40,8 @@ func (rpigpio *RPIGPIOWrapper) SetState(color string) error {
 	}
 
 	return nil
+}
+
+func (rpigpio *RPIGPIOMock) Destroy() {
+	log.Println("Destroying")
 }
