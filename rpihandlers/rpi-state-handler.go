@@ -15,14 +15,14 @@ type RPIStateHandler struct {
 func NewRPIStateHandler() *RPIStateHandler {
 	mqtt := mqttwrapper.NewTrafficLightMQTTProxy("rpi-listener", "rpi-listener", false)
 
-	simulated := true
+	simulated := false
 
 	var rpigpio rpigpiowrapper.RPIGPIO
 
 	if simulated {
 		rpigpio = rpigpiowrapper.NewRPIGPIOMock()
 	} else {
-		//	rpigpio = rpigpiowrapper.NewRPIGPIOPhy()
+		rpigpio = rpigpiowrapper.NewRPIGPIOPhy()
 	}
 
 	return &RPIStateHandler{mqtt: mqtt, rpigpio: rpigpio}
