@@ -1,14 +1,18 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"time"
 
 	"github.com/datoga/rpi-go-traffic-light/rpihandlers"
 )
 
+var timeToFinish = flag.Int("time", 0, "Time (minutes) to block until finish (0 to unfinished)")
+
 func init() {
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
+	flag.Parse()
 }
 
 func main() {
@@ -48,11 +52,15 @@ func main() {
 	defer modeListener.Stop()
 	defer modeListener.Destroy()
 
-	time.Sleep(5 * time.Minute)
+	if *timeToFinish <= 0 {
+		select {} // blocks eternally
+	} else {
+		time.Sleep(time.Duration(*timeToFinish) * time.Minute)
 
-	if auto.Started {
-		auto.Stop()
+		if auto.Started {
+			auto.Stop()
+		}
+
+		auto.Destroy()
 	}
-
-	auto.Destroy()
 }

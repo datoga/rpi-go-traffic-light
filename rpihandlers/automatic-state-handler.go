@@ -25,7 +25,7 @@ func NewAutomaticStateHandler() *AutomaticStateHandler {
 	mqtt := mqttwrapper.NewTrafficLightMQTTProxy("rpi-automatic-handler", "rpi-automatic-handler", false)
 
 	greenState := TrafficLightState{"green", 10}
-	yellowState := TrafficLightState{"yellow", 1}
+	yellowState := TrafficLightState{"yellow", 3}
 	redState := TrafficLightState{"red", 20}
 
 	states := []TrafficLightState{greenState, yellowState, redState}

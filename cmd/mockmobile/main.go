@@ -14,6 +14,20 @@ func init() {
 func main() {
 	remoteActuator := actuators.NewRemoteActuator()
 
+	go func() {
+		for {
+			state, err := remoteActuator.GetRemoteState()
+
+			if err != nil {
+				log.Println(err)
+			} else {
+				log.Println("Current remote state:", state)
+			}
+
+			time.Sleep(100 * time.Millisecond)
+		}
+	}()
+
 	if err := remoteActuator.Start(); err != nil {
 		log.Fatalln(err)
 	}

@@ -122,9 +122,12 @@ func (mqtt *TrafficLightMQTTProxy) PublishMode(mode string) error {
 }
 
 func (mqtt *TrafficLightMQTTProxy) Disconnect() {
-	mqtt.client.Disconnect(0)
-
-	log.Println("Client", mqtt.User, "disconnected")
+	if mqtt.client.IsConnected() {
+		mqtt.client.Disconnect(0)
+		log.Println("Client", mqtt.User, "disconnected")
+	} else {
+		log.Println("The client was disconnected previously")
+	}
 }
 
 func (mqtt *TrafficLightMQTTProxy) setChangeColorCallback(cb ChangeColorMQTTCallback) {
