@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.1.1_278e6b1320c6291b2dc74f94b0678124915a697e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2622e0a1a178e8eccdc85d3e9989420e12505781">
+        <dex dex="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_6eff787e20ce7a729635b74a69e38c4006534df1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
+        <dex dex="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.1.1_a8b849b9c31520db488a16641a63e5cfb8e47ac9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
+        <dex dex="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.1.1_4e81a5525ee48ce9a959524b6f10002cc7757b14\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.1.1_4f70dd152d8e227ffffbb2e776482929eb8e7e33\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\datoga\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.1\support-annotations-25.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
+        <dex dex="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.1_2a6151907f6bb4a7ea6e0a2aa177bd87b2a637ba\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fbab3718a08cfe0db22be07e7a9aac336f80c7ba">
+        <dex dex="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a596ca8e70c14148bd7d07ca9b84986b0527ed2c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
+        <dex dex="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.1.1_423a6fa38dc9210d56da771e604d907fa60b4c39\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.1.1_e732751ea0ada4eb466bd4ad0bd1d8e539b1a218\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
+        <dex dex="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.1.1_d76f802c72334a0c951fa7a94bde5d919658bb57\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
+        <dex dex="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.1.1_4b1a73024ea8b480aa055a11564220121ff947ab\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
+        <dex dex="C:\Users\datoga\AndroidStudioProjects\RPI-Traffic-LightApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.1.1_a4c3e3738b3b47cd8e53d903ae711068ca00b32d\classes.dex" />
+    </item>
+
+</items>

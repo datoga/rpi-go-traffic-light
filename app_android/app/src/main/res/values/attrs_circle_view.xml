@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="CircleView">
+        <attr name="onColor" format="color" />
+    </declare-styleable>
+</resources>
