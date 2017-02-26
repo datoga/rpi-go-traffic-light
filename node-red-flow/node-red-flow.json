@@ -1,0 +1,195 @@
+[
+    {
+        "id": "2628439e.bcb63c",
+        "type": "tab",
+        "label": "Main flow"
+    },
+    {
+        "id": "3d0fe0a9.d4089",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "m21.cloudmqtt.com",
+        "port": "17122",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "93fb5f24.c2ed1",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "m21.cloudmqtt.com",
+        "port": "17122",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "ae70d7d3.0a3798",
+        "type": "mqtt in",
+        "z": "2628439e.bcb63c",
+        "name": "Sniffing status changes",
+        "topic": "traffic-light/status",
+        "qos": "2",
+        "broker": "3d0fe0a9.d4089",
+        "x": 128.5,
+        "y": 81,
+        "wires": [
+            [
+                "e1991460.51de28",
+                "76f39519.ac4cac"
+            ]
+        ]
+    },
+    {
+        "id": "e1991460.51de28",
+        "type": "debug",
+        "z": "2628439e.bcb63c",
+        "name": "Logging changes",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 443.5,
+        "y": 144,
+        "wires": []
+    },
+    {
+        "id": "96235896.831f58",
+        "type": "play audio",
+        "z": "2628439e.bcb63c",
+        "name": "",
+        "voice": "5",
+        "x": 748.5,
+        "y": 45,
+        "wires": []
+    },
+    {
+        "id": "d1ed0b10.1f6ff8",
+        "type": "inject",
+        "z": "2628439e.bcb63c",
+        "name": "",
+        "topic": "traffic-light/mode",
+        "payload": "manual",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 164.5,
+        "y": 318,
+        "wires": [
+            [
+                "5d18997a.02b4b8"
+            ]
+        ]
+    },
+    {
+        "id": "5d18997a.02b4b8",
+        "type": "mqtt out",
+        "z": "2628439e.bcb63c",
+        "name": "MQTT_WRITE",
+        "topic": "traffic-light/mode",
+        "qos": "0",
+        "retain": "true",
+        "broker": "93fb5f24.c2ed1",
+        "x": 533.5,
+        "y": 313,
+        "wires": []
+    },
+    {
+        "id": "76f39519.ac4cac",
+        "type": "switch",
+        "z": "2628439e.bcb63c",
+        "name": "IsRed",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "red",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 1,
+        "x": 359.5,
+        "y": 33,
+        "wires": [
+            [
+                "83824f44.bdfe1"
+            ]
+        ]
+    },
+    {
+        "id": "83824f44.bdfe1",
+        "type": "change",
+        "z": "2628439e.bcb63c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "para, majo",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 557.5,
+        "y": 31,
+        "wires": [
+            [
+                "96235896.831f58"
+            ]
+        ]
+    },
+    {
+        "id": "434b670b.9ed6b8",
+        "type": "mqtt in",
+        "z": "2628439e.bcb63c",
+        "name": "Sniffing mode changes",
+        "topic": "traffic-light/mode",
+        "qos": "2",
+        "broker": "3d0fe0a9.d4089",
+        "x": 126.5,
+        "y": 182,
+        "wires": [
+            [
+                "e1991460.51de28",
+                "90a542d6.b52eb"
+            ]
+        ]
+    },
+    {
+        "id": "90a542d6.b52eb",
+        "type": "file",
+        "z": "2628439e.bcb63c",
+        "name": "LogFile",
+        "filename": "log_mode.log",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "x": 410.5,
+        "y": 225,
+        "wires": []
+    }
+]
