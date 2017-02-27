@@ -61,12 +61,10 @@ func (remoteActuator *RemoteActuator) SetManual() error {
 
 func (remoteActuator *RemoteActuator) SetAutomatic() error {
 	return remoteActuator.mqtt.PublishMode("auto")
-
 }
 
 func (remoteActuator *RemoteActuator) SetGreen() error {
 	return remoteActuator.mqtt.PublishState("green")
-
 }
 
 func (remoteActuator *RemoteActuator) SetYellow() error {
